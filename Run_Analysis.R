@@ -50,3 +50,6 @@ dfFinal <- select(dfSubset, 2, 69, 3:68)
 # Get independent summary data frame, getting mean data per activity and subject
 dfSummary <- select(aggregate(dfFinal, by = list(dfFinal$subject,dfFinal$activityDesc ), FUN=mean, na.rm=TRUE), 1:2, 5:70)
 names(dfSummary)[1:2] <- c("subject", "activityDesc")
+
+# write tidy data set of text file
+write.table(dfSummary, "tidySet.txt", row.names=FALSE)
